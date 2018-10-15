@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>TypeScript Novice</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
@@ -24,8 +24,35 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+                                <section>
+                                  <h2>What is TypeScript?</h2>
+                                  <blockquote>
+                                    <a href="https://github.com/Microsoft/TypeScript">
+                                      TypeScript is a language for application-scale JavaScript
+                                    </a>
+                                  </blockquote>
+                                  <p>Basically, it's a superset of JavaScript, adding optional static typing to the language, that compiles to clean JavaScript output.</p>
+                                  <p>Anders Hejlsberg, lead architect of C# and creator of Delphi and Turbo Pascal, has worked on the development of TypeScript.</p>
+                                </section>
+
+                                <section id="fragments">
+                                      <h2>History</h2>
+                                      <ul>
+                                        <li class="fragment">2012 - Microsoft made public TypeScript</li>
+                                        <li class="fragment">2014 - Microsoft release version 1.0</li>
+                                        <li class="fragment">2018 - TypeScript surpass JavaScript on NPM</li>
+                                      </ul>
+                                </section>
+
+                                <section id="fragments">
+                                      <h2>Type Inference</h2>
+                                      <p>When the type is not declared explicitly, TS can infer it</p>
+                                      <ul>
+                                        <li class="fragment">TS use the <b>best commont type</b> algorithm to find it</li>
+                                        <li class="fragment">When no best commont type is found, the inference is the <b>union</b> array type</li>
+                                      </ul>
+                                </section>
+
 			</div>
 		</div>
 
