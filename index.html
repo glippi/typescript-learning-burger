@@ -27,15 +27,18 @@
   <div class="reveal">
     <div class="slides">
       <section>
-        <h2>What is TypeScript?</h2>
+        <h2>TypeScript:</h2>
         <blockquote>
-          <a href="https://github.com/Microsy2oft/TypeScript">
-            TypeScript is a language for application-scale JavaScript
+          <a href="https://github.com/Microsoft/TypeScript">
+            a language for application-scale JavaScript
           </a>
         </blockquote>
-        <p>Basically, it's a superset of JavaScript, adding optional static typing to the language, that compiles to clean JavaScript
+        <p>It's a superset of JavaScript, adding optional static typing to the language, that compiles to clean JavaScript
           output.
         </p>
+      </section>
+
+      <section>
         <p>Anders Hejlsberg, lead architect of C# and creator of Delphi and Turbo Pascal, has worked on the development of TypeScript.</p>
       </section>
 
@@ -53,7 +56,7 @@
         <p>When the type is not declared explicitly, TS can infer it</p>
         <ul>
           <li class="fragment">TS use the
-            <b>best commont type</b> algorithm to find it. BCT picks the type that is compatible with all the other candidates</li>
+            <b>best common type</b> algorithm to find it. BCT picks the type that is compatible with all the other candidates</li>
           <li class="fragment">When no best commont type is found, the inference is the
             <b>union</b> array type</li>
         </ul>
@@ -79,7 +82,11 @@
           <b>[]</b>
         </p>
         <p>
-          <b>Interfaces</b> are the core way in TypeScript to compose multiple type annotations into a single named annotation</p>
+      </section>
+
+      <section>
+        <h2>Interfaces</h2>
+        <p>are the core way in TypeScript to compose multiple type annotations into a single named annotation</p>
         <pre><code data-trim data-noescape>
                                         interface Name {
                                             first: string;
@@ -111,7 +118,11 @@
             <b>void</b> is used to signify that a function does not have a return type</li>
         </ul>
         <p>
-          <b>Generics</b>: when you want to enforce a constraint between various variables</p>
+      </section>
+
+      <section>
+          <h2>Generics</h2>
+          <p>when you want to enforce a constraint between various variables</p>
         <pre><code data-trim data-noescape>
                                         function reverse<T>(items: T[]): T[] {
                                             var toreturn = [];
@@ -135,29 +146,36 @@
       </section>
 
       <section>
-        <p>
-          <b>Union Types</b>: denoted by a |</p>
-        <p>
-          <b>Intersection Types</b>
-        </p>
-        <pre><code data-trim data-noescape>
-                                        function extend<T, U>(first: T, second: U): T & U {
-                                          let result = <T & U> {};
-                                          for (let id in first) {
-                                              result[id] = first[id];
-                                          }
-                                          for (let id in second) {
-                                              if (!result.hasOwnProperty(id)) {
-                                                  result[id] = second[id];
-                                              }
-                                          }
-                                          return result;
-                                      }
-                                        </code></pre>
+        <h2>Union Types</h2>
+        <p>denoted by a |, when you want to allow a property to be one of multiple types e.g. a string or a number</p>
       </section>
+
       <section>
-        <p>
-          <b>Tuple Types</b>: JavaScript lacks this type of data structure, that is simply an array</p>
+        <h2>Intersection Types</h2>
+        <p>extending objects is a very common pattern in JavaScript. An Intersection Type allows you to use this pattern in a safe way as demonstrated below: </p>
+        <pre><code data-trim data-noescape>
+        function extend<T, U>(first: T, second: U): T & U {
+          let result = <T & U> {};
+          for (let id in first) {
+              result[id] = first[id];
+          }
+          for (let id in second) {
+              if (!result.hasOwnProperty(id)) {
+                  result[id] = second[id];
+              }
+          }
+          return result;
+        }
+        var x = extend({ a: "hello" }, { b: 42 });
+        // x now has both `a` and `b`
+        var a = x.a;
+        var b = x.b;
+        </code></pre>
+      </section>
+
+      <section>
+       <h2>Tuple Types</h2>
+        <p>JavaScript lacks this type of data structure, that is simply an array</p>
         <pre><code data-trim data-noescape>
                                         var nameNumber: [string, number];
 
@@ -168,10 +186,9 @@
                                         nameNumber = ['Jenny', '867-5309'];
                                         </code></pre>
       </section>
+
       <section>
-        <p>
-          <b>Type Alias</b>
-        </p>
+        <h2>Type Alias</h2>
         <pre><code data-trim data-noescape>
                                         type StrOrNum = string|number;
                                         type Coordinates = [number, number];
@@ -216,18 +233,18 @@
         <p>This is commonly used in the JavaScript land for making sure that stuff doesn't leak into the global namespace: therefore
           TypeScript provides the namespace keyword to group these</p>
         <pre><code data-trim data-noescape>
-				      namespace Utility {
-					export function log(msg) {
-					  console.log(msg);
-					}
-					export function error(msg) {
-					  console.error(msg);
-					}
-				      }
-				      // usage
-				      Utility.log('Call me');
-				      Utility.error('maybe!');
-				      </code></pre>
+          namespace Utility {
+            export function log(msg) {
+              console.log(msg);
+            }
+            export function error(msg) {
+              console.error(msg);
+            }
+          }
+          // usage
+          Utility.log('Call me');
+          Utility.error('maybe!');
+        </code></pre>
       </section>
 
       <section>
@@ -237,31 +254,31 @@
       <section>
         <p>Stateless Functional Components</p>
         <pre><code data-trim data-noescape>
-                                        type Props = {
-                                          foo: string;
-                                        }
-                                        const MyComponent: React.SFC<Props> = (props) => {
-                                            return <span>{props.foo}</span>
-                                        }
+          type Props = {
+            foo: string;
+          }
+          const MyComponent: React.SFC<Props> = (props) => {
+              return <span>{props.foo}</span>
+          }
 
-                                        <MyComponent foo="bar" />
-                                        </code></pre>
+          <MyComponent foo="bar" />
+        </code></pre>
       </section>
 
       <section>
         <p>Stateful Components</p>
         <pre><code data-trim data-noescape>
-                                      type Props = {
-                                        foo: string;
-                                      }
-                                      class MyComponent extends React.Component<Props, {}> {
-                                          render() {
-                                              return <span>{this.props.foo}</span>
-                                          }
-                                      }
+          type Props = {
+            foo: string;
+          }
+          class MyComponent extends React.Component<Props, {}> {
+              render() {
+                  return <span>{this.props.foo}</span>
+              }
+          }
 
-                                      <MyComponent foo="bar" />
-				      </code></pre>
+          <MyComponent foo="bar" />
+          </code></pre>
       </section>
 
       <section>
