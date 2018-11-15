@@ -50,8 +50,147 @@
                                       <ul>
                                         <li class="fragment">TS use the <b>best commont type</b> algorithm to find it. BCT picks the type that is compatible with all the other candidates</li>
                                         <li class="fragment">When no best commont type is found, the inference is the <b>union</b> array type</li>
-                                        <li class="fragment"></li>
                                       </ul>
+                                </section>
+
+                                <section>
+                                      <h2>Type Annotations</h2>
+                                </section>
+
+                                <section id="fragments">
+                                      <h2>Basic Types</h2>
+                                      <p>types are annotated using <b>:TypeAnnotation</b> syntax</p>
+                                      	<pre><code data-trim data-noescape>
+                                        const num: number = 123;
+
+                                        function identity(num: number): number {
+                                            return num;
+                                        }
+                                        </code></pre>
+                                        <p>JavaScript primitive types are well represented in the TypeScript type system</p>
+                                        <p>We can specify that the variable is an Array using <b>[]</b></p>
+                                        <p><b>Interfaces</b> are the core way in TypeScript to compose multiple type annotations into a single named annotation</p>
+                                      	<pre><code data-trim data-noescape>
+                                        interface Name {
+                                            first: string;
+                                            second: string;
+                                        }
+
+                                        var name: Name;
+                                        name = {
+                                            first: 'John',
+                                            second: 'Doe'
+                                        };
+                                        </code></pre>
+                                        <p>It's also possible to do Inline Type Annotation, but it's not the best practice for readability reasons</p>
+                                </section>
+
+                                <section>
+                                      <h2>Special Types</h2>
+                                      <p>These types have special meaning in TS: <b>any</b>, <b>null</b>, <b>undefined</b>, <b>void</b>.</p>
+                                      <ul>
+                                        <li><b>any</b> basically tells the compiler to not consider the type of the variable</li>
+                                        <li><b>null</b> and undefined can be assigned to any other type.</li>
+                                        <li><b>void</b> is used to signify that a function does not have a return type</li>
+                                      </ul>
+                                      <p><b>Generics</b>: when you want to enforce a constraint between various variables</p>
+                                      	<pre><code data-trim data-noescape>
+                                        function reverse<T>(items: T[]): T[] {
+                                            var toreturn = [];
+                                            for (let i = items.length - 1; i >= 0; i--) {
+                                                toreturn.push(items[i]);
+                                            }
+                                            return toreturn;
+                                        }
+
+                                        const sample = [1, 2, 3];
+                                        const reversed = reverse(sample);
+                                        console.log(reversed); // 3,2,1
+
+                                        // Safety!
+                                        reversed[0] = '1';     // Error!
+                                        reversed = ['1', '2']; // Error!
+
+                                        reversed[0] = 1;       // Okay
+                                        reversed = [1, 2];     // Okay
+                                        </code></pre>
+                                        <p><b>Union Types</b>: denoted by a <b>|</b</p>
+                                        <p><b>Intersection Types</b></p>
+                                      	<pre><code data-trim data-noescape>
+                                        function extend<T, U>(first: T, second: U): T & U {
+                                          let result = <T & U> {};
+                                          for (let id in first) {
+                                              result[id] = first[id];
+                                          }
+                                          for (let id in second) {
+                                              if (!result.hasOwnProperty(id)) {
+                                                  result[id] = second[id];
+                                              }
+                                          }
+                                          return result;
+                                      }
+                                        </code></pre>
+                                        <p><b>Tuple Types</b>: JavaScript lacks this type of data structure, that is simply an array</p>
+                                      	<pre><code data-trim data-noescape>
+                                        var nameNumber: [string, number];
+
+                                        // Okay
+                                        nameNumber = ['Jenny', 8675309];
+
+                                        // Error!
+                                        nameNumber = ['Jenny', '867-5309'];
+                                        </code></pre>
+                                        <p><b>Type Alias</b></p>
+                                      	<pre><code data-trim data-noescape>
+                                        type StrOrNum = string|number;
+                                        type Coordinates = [number, number];
+                                        </code></pre>
+                                </section>
+
+                                <section>
+                                      <h2>Enums</h2>
+                                      <p>TypeScript has this built-in type, but it's kind deprecated because it produce javascript code</p>
+				      <pre><code data-trim data-noescape>
+                                        enum Tristate {
+                                            False,
+                                            True,
+                                            Unknown
+                                        }
+
+                                        var Tristate;
+                                        (function (Tristate) {
+                                            Tristate[Tristate["False"] = 0] = "False";
+                                            Tristate[Tristate["True"] = 1] = "True";
+                                            Tristate[Tristate["Unknown"] = 2] = "Unknown";
+                                        })(Tristate || (Tristate = {})
+                                        </code></pre>
+                                      <p>instead of using Enums we can opt for <b>string literals</b></p>
+                                </section>
+
+                                <section>
+                                      <h2>Namespace</h2>
+                                      <p>Namespaces provide you with a convenient syntax around a common pattern used in JavaScript</p>
+                                      	<pre><code data-trim data-noescape>
+					(function(something) {
+
+					    something.foo = 123;
+
+					    })(something || (something = {}))
+                                        </code></pre>
+                                      <p>This is commonly used in the JavaScript land for making sure that stuff doesn't leak into the global namespace: therefore TypeScript provides the namespace keyword to group these</p>
+				      <pre><code data-trim data-noescape>
+				      namespace Utility {
+					export function log(msg) {
+					  console.log(msg);
+					}
+					export function error(msg) {
+					  console.error(msg);
+					}
+				      }
+				      // usage
+				      Utility.log('Call me');
+				      Utility.error('maybe!');
+				      </code></pre>
                                 </section>
 
 			</div>
