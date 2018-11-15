@@ -1,76 +1,86 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>TypeScript Learning Burger</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+  <title>TypeScript Learning Burger</title>
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/black.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-                                <section>
-                                  <h2>What is TypeScript?</h2>
-                                  <blockquote>
-                                    <a href="https://github.com/Microsoft/TypeScript">
-                                      TypeScript is a language for application-scale JavaScript
-                                    </a>
-                                  </blockquote>
-                                  <p>Basically, it's a superset of JavaScript, adding optional static typing to the language, that compiles to clean JavaScript output.</p>
-                                  <p>Anders Hejlsberg, lead architect of C# and creator of Delphi and Turbo Pascal, has worked on the development of TypeScript.</p>
-                                </section>
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
 
-                                <section id="fragments">
-                                      <h2>History</h2>
-                                      <ul>
-                                        <li class="fragment">2012 - Microsoft made public TypeScript</li>
-                                        <li class="fragment">2014 - Microsoft release version 1.0</li>
-                                        <li class="fragment">2018 - TypeScript surpass JavaScript on NPM</li>
-                                      </ul>
-                                </section>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+</head>
 
-                                <section id="fragments">
-                                      <h2>Type Inference</h2>
-                                      <p>When the type is not declared explicitly, TS can infer it</p>
-                                      <ul>
-                                        <li class="fragment">TS use the <b>best commont type</b> algorithm to find it. BCT picks the type that is compatible with all the other candidates</li>
-                                        <li class="fragment">When no best commont type is found, the inference is the <b>union</b> array type</li>
-                                      </ul>
-                                </section>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h2>What is TypeScript?</h2>
+        <blockquote>
+          <a href="https://github.com/Microsy2oft/TypeScript">
+            TypeScript is a language for application-scale JavaScript
+          </a>
+        </blockquote>
+        <p>Basically, it's a superset of JavaScript, adding optional static typing to the language, that compiles to clean JavaScript
+          output.
+        </p>
+        <p>Anders Hejlsberg, lead architect of C# and creator of Delphi and Turbo Pascal, has worked on the development of TypeScript.</p>
+      </section>
 
-                                <section>
-                                      <h2>Type Annotations</h2>
-                                </section>
+      <section id="fragments">
+        <h2>History</h2>
+        <ul>
+          <li class="fragment">2012 - Microsoft made public TypeScript</li>
+          <li class="fragment">2014 - Microsoft release version 1.0</li>
+          <li class="fragment">2018 - TypeScript surpass JavaScript on NPM</li>
+        </ul>
+      </section>
 
-                                <section id="fragments">
-                                      <h2>Basic Types</h2>
-                                      <p>types are annotated using <b>:TypeAnnotation</b> syntax</p>
-                                      	<pre><code data-trim data-noescape>
+      <section id="fragments">
+        <h2>Type Inference</h2>
+        <p>When the type is not declared explicitly, TS can infer it</p>
+        <ul>
+          <li class="fragment">TS use the
+            <b>best commont type</b> algorithm to find it. BCT picks the type that is compatible with all the other candidates</li>
+          <li class="fragment">When no best commont type is found, the inference is the
+            <b>union</b> array type</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Type Annotations</h2>
+      </section>
+
+      <section id="fragments">
+        <h2>Basic Types</h2>
+        <p>types are annotated using
+          <b>:TypeAnnotation</b> syntax</p>
+        <pre><code data-trim data-noescape>
                                         const num: number = 123;
 
                                         function identity(num: number): number {
                                             return num;
                                         }
                                         </code></pre>
-                                        <p>JavaScript primitive types are well represented in the TypeScript type system</p>
-                                        <p>We can specify that the variable is an Array using <b>[]</b></p>
-                                        <p><b>Interfaces</b> are the core way in TypeScript to compose multiple type annotations into a single named annotation</p>
-                                      	<pre><code data-trim data-noescape>
+        <p>JavaScript primitive types are well represented in the TypeScript type system</p>
+        <p>We can specify that the variable is an Array using
+          <b>[]</b>
+        </p>
+        <p>
+          <b>Interfaces</b> are the core way in TypeScript to compose multiple type annotations into a single named annotation</p>
+        <pre><code data-trim data-noescape>
                                         interface Name {
                                             first: string;
                                             second: string;
@@ -82,19 +92,27 @@
                                             second: 'Doe'
                                         };
                                         </code></pre>
-                                        <p>It's also possible to do Inline Type Annotation, but it's not the best practice for readability reasons</p>
-                                </section>
+        <p>It's also possible to do Inline Type Annotation, but it's not the best practice for readability reasons</p>
+      </section>
 
-                                <section>
-                                      <h2>Special Types</h2>
-                                      <p>These types have special meaning in TS: <b>any</b>, <b>null</b>, <b>undefined</b>, <b>void</b>.</p>
-                                      <ul>
-                                        <li><b>any</b> basically tells the compiler to not consider the type of the variable</li>
-                                        <li><b>null</b> and undefined can be assigned to any other type.</li>
-                                        <li><b>void</b> is used to signify that a function does not have a return type</li>
-                                      </ul>
-                                      <p><b>Generics</b>: when you want to enforce a constraint between various variables</p>
-                                      	<pre><code data-trim data-noescape>
+      <section>
+        <h2>Special Types</h2>
+        <p>These types have special meaning in TS:
+          <b>any</b>,
+          <b>null</b>,
+          <b>undefined</b>,
+          <b>void</b>.</p>
+        <ul>
+          <li>
+            <b>any</b> basically tells the compiler to not consider the type of the variable</li>
+          <li>
+            <b>null</b> and undefined can be assigned to any other type.</li>
+          <li>
+            <b>void</b> is used to signify that a function does not have a return type</li>
+        </ul>
+        <p>
+          <b>Generics</b>: when you want to enforce a constraint between various variables</p>
+        <pre><code data-trim data-noescape>
                                         function reverse<T>(items: T[]): T[] {
                                             var toreturn = [];
                                             for (let i = items.length - 1; i >= 0; i--) {
@@ -114,9 +132,15 @@
                                         reversed[0] = 1;       // Okay
                                         reversed = [1, 2];     // Okay
                                         </code></pre>
-                                        <p><b>Union Types</b>: denoted by a <b>|</b</p>
-                                        <p><b>Intersection Types</b></p>
-                                      	<pre><code data-trim data-noescape>
+      </section>
+
+      <section>
+        <p>
+          <b>Union Types</b>: denoted by a |</p>
+        <p>
+          <b>Intersection Types</b>
+        </p>
+        <pre><code data-trim data-noescape>
                                         function extend<T, U>(first: T, second: U): T & U {
                                           let result = <T & U> {};
                                           for (let id in first) {
@@ -130,8 +154,11 @@
                                           return result;
                                       }
                                         </code></pre>
-                                        <p><b>Tuple Types</b>: JavaScript lacks this type of data structure, that is simply an array</p>
-                                      	<pre><code data-trim data-noescape>
+      </section>
+      <section>
+        <p>
+          <b>Tuple Types</b>: JavaScript lacks this type of data structure, that is simply an array</p>
+        <pre><code data-trim data-noescape>
                                         var nameNumber: [string, number];
 
                                         // Okay
@@ -140,17 +167,21 @@
                                         // Error!
                                         nameNumber = ['Jenny', '867-5309'];
                                         </code></pre>
-                                        <p><b>Type Alias</b></p>
-                                      	<pre><code data-trim data-noescape>
+      </section>
+      <section>
+        <p>
+          <b>Type Alias</b>
+        </p>
+        <pre><code data-trim data-noescape>
                                         type StrOrNum = string|number;
                                         type Coordinates = [number, number];
                                         </code></pre>
-                                </section>
+      </section>
 
-                                <section>
-                                      <h2>Enums</h2>
-                                      <p>TypeScript has this built-in type, but it's kind deprecated because it produce javascript code</p>
-				      <pre><code data-trim data-noescape>
+      <section>
+        <h2>Enums</h2>
+        <p>TypeScript has this built-in type, but it's kind deprecated because it produce javascript code</p>
+        <pre><code data-trim data-noescape>
                                         enum Tristate {
                                             False,
                                             True,
@@ -164,21 +195,27 @@
                                             Tristate[Tristate["Unknown"] = 2] = "Unknown";
                                         })(Tristate || (Tristate = {})
                                         </code></pre>
-                                      <p>instead of using Enums we can opt for <b>string literals</b></p>
-                                </section>
+        <p>instead of using Enums we can opt for
+          <b>string literals</b>
+        </p>
+      </section>
 
-                                <section>
-                                      <h2>Namespace</h2>
-                                      <p>Namespaces provide you with a convenient syntax around a common pattern used in JavaScript</p>
-                                      	<pre><code data-trim data-noescape>
+      <section>
+        <h2>Namespace</h2>
+        <p>Namespaces provide you with a convenient syntax around a common pattern used in JavaScript</p>
+        <pre><code data-trim data-noescape>
 					(function(something) {
 
 					    something.foo = 123;
 
 					    })(something || (something = {}))
                                         </code></pre>
-                                      <p>This is commonly used in the JavaScript land for making sure that stuff doesn't leak into the global namespace: therefore TypeScript provides the namespace keyword to group these</p>
-				      <pre><code data-trim data-noescape>
+      </section>
+
+      <section>
+        <p>This is commonly used in the JavaScript land for making sure that stuff doesn't leak into the global namespace: therefore
+          TypeScript provides the namespace keyword to group these</p>
+        <pre><code data-trim data-noescape>
 				      namespace Utility {
 					export function log(msg) {
 					  console.log(msg);
@@ -191,15 +228,15 @@
 				      Utility.log('Call me');
 				      Utility.error('maybe!');
 				      </code></pre>
-                                </section>
+      </section>
 
-                                <section>
-                                      <h2>TypeScript + React</h2>
-                                </section>
+      <section>
+        <h2>TypeScript + React</h2>
+      </section>
 
-                                <section>
-                                      <p>Stateless Functional Components</p>
-                                      	<pre><code data-trim data-noescape>
+      <section>
+        <p>Stateless Functional Components</p>
+        <pre><code data-trim data-noescape>
                                         type Props = {
                                           foo: string;
                                         }
@@ -209,8 +246,11 @@
 
                                         <MyComponent foo="bar" />
                                         </code></pre>
-                                      <p>Stateful Components</p>
-				      <pre><code data-trim data-noescape>
+      </section>
+
+      <section>
+        <p>Stateful Components</p>
+        <pre><code data-trim data-noescape>
                                       type Props = {
                                         foo: string;
                                       }
@@ -220,68 +260,76 @@
                                           }
                                       }
 
-                                      <MyComponent foo="bar"
+                                      <MyComponent foo="bar" />
 				      </code></pre>
-                                </section>
+      </section>
 
-                                <section>
-                                      <h2>Avoid export default:</h2>
-                                      <p>You cannot explore a module with intellisense to see if it has a default export or not.</p>
-                                      <p>Loose the autocomplete feature</p>
-                                      <p>Auto import quickfix works better</p>
-                                </section>
+      <section>
+        <h2>Avoid export default:</h2>
+        <p>You cannot explore a module with intellisense to see if it has a default export or not.</p>
+        <p>Loose the autocomplete feature</p>
+        <p>Auto import quickfix works better</p>
+      </section>
 
-                                <section>
-                                      <h2>Pro tips:</h2>
-                                      <ol>
-                                        <li>Don’t use public accessor within classes: all members within class are public by default, and is not "valid/idiomatic javascript"</li>
-                                        <li>Don’t use private accessor within Component class: private accessor won't make your properties/methods on class private during runtime and you should almost never need to work directly with React Component instance nor accessing its class properties.</li>
-                                        <li>Don't use Enums: compiled output generates unnecessary boilerplate</li>
-                                        <li>Always provide explicit type for children Props</li>
-                                        <li>Use type inference for defining Component State or DefaultProps</li>
-                                        <li>Don’t use method declaration within interface/type alias</li>
-                                        <li>Don’t use JSX.Element to annotate function/component return type or children/props</li>
-                                      </ol>
-                                </section>
+      <section>
+        <h2>Pro tips:</h2>
+        <ul>
+          <li>Don’t use public accessor within classes: all members within class are public by default, and is not "valid/idiomatic
+            javascript"</li>
+          <li>Don’t use private accessor within Component class: private accessor won't make your properties/methods on class
+            private during runtime and you should almost never need to work directly with React Component instance nor accessing
+            its class properties.</li>
+          <li>Don't use Enums: compiled output generates unnecessary boilerplate</li>
+        </ul>
+      </section>
+      <section>
+        <ul>
+          <li>Always provide explicit type for children Props</li>
+          <li>Use type inference for defining Component State or DefaultProps</li>
+          <li>Don’t use method declaration within interface/type alias</li>
+          <li>Don’t use JSX.Element to annotate function/component return type or children/props</li>
+        </ul>
+      </section>
 
-                                <section>
-                                      <h2>Resources:</h2>
-                                      <ul>
-                                        <li>http://www.techladder.io/?tech=typescript</li>
-                                        <li>https://www.typescriptlang.org/</li>
-                                        <li>https://www.typescriptlang.org/play/index.html</li>
-                                        <li>https://basarat.gitbooks.io/typescript/content/</li>
-                                        <li>https://medium.com/@martin_hotell/10-typescript-pro-tips-patterns-with-or-without-react-5799488d6680</li>
-                                      </ul>
-                                </section>
+      <section>
+        <h2>Resources:</h2>
+        <ul>
+          <li><a href="http://www.techladder.io/?tech=typescript">http://www.techladder.io/?tech=typescript</a> </li>
+          <li><a href="https://www.typescriptlang.org">https://www.typescriptlang.org/</a> </li>
+          <li><a href="https://www.typescriptlang.org/play/index.html">https://www.typescriptlang.org/play/index.html</a> </li>
+          <li><a href="https://basarat.gitbooks.io/typescript/content/">https://basarat.gitbooks.io/typescript/content/</a> </li>
+          <li><a href="https://medium.com/@martin_hotell/10-typescript-pro-tips-patterns-with-or-without-react-5799488d6680">https://medium.com/@martin_hotell/10-typescript-pro-tips-patterns-with-or-without-react-5799488d6680</a> </li>
+        </ul>
+      </section>
 
-                                <section>
-                                      <h2>TODO:</h2>
-                                      <ul>
-                                        <li>Deep dive tsconfig options</li>
-                                        <li>Go beyond basic TypeScript usage</li>
-                                        <li>Deepen TypeScript potentiality for functional programmin</li>
-                                      </ul>
-                                </section>
+      <section>
+        <h2>TODO:</h2>
+        <ul>
+          <li>Deep dive tsconfig options</li>
+          <li>Go beyond basic TypeScript usage</li>
+          <li>Deepen TypeScript potentiality for functional programming</li>
+        </ul>
+      </section>
 
-			</div>
-		</div>
+    </div>
+  </div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+  <script>
+    // More info about config & dependencies:
+    // - https://github.com/hakimel/reveal.js#configuration
+    // - https://github.com/hakimel/reveal.js#dependencies
+    Reveal.initialize({
+      dependencies: [
+        { src: 'plugin/markdown/marked.js' },
+        { src: 'plugin/markdown/markdown.js' },
+        { src: 'plugin/notes/notes.js', async: true },
+        { src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+      ]
+    });
+  </script>
+</body>
+
 </html>
