@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>TypeScript Novice</title>
+		<title>TypeScript Learning Burger</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
@@ -191,6 +191,77 @@
 				      Utility.log('Call me');
 				      Utility.error('maybe!');
 				      </code></pre>
+                                </section>
+
+                                <section>
+                                      <h2>TypeScript + React</h2>
+                                </section>
+
+                                <section>
+                                      <p>Stateless Functional Components</p>
+                                      	<pre><code data-trim data-noescape>
+                                        type Props = {
+                                          foo: string;
+                                        }
+                                        const MyComponent: React.SFC<Props> = (props) => {
+                                            return <span>{props.foo}</span>
+                                        }
+
+                                        <MyComponent foo="bar" />
+                                        </code></pre>
+                                      <p>Stateful Components</p>
+				      <pre><code data-trim data-noescape>
+                                      type Props = {
+                                        foo: string;
+                                      }
+                                      class MyComponent extends React.Component<Props, {}> {
+                                          render() {
+                                              return <span>{this.props.foo}</span>
+                                          }
+                                      }
+
+                                      <MyComponent foo="bar"
+				      </code></pre>
+                                </section>
+
+                                <section>
+                                      <h2>Avoid export default:</h2>
+                                      <p>You cannot explore a module with intellisense to see if it has a default export or not.</p>
+                                      <p>Loose the autocomplete feature</p>
+                                      <p>Auto import quickfix works better</p>
+                                </section>
+
+                                <section>
+                                      <h2>Pro tips:</h2>
+                                      <ol>
+                                        <li>Don’t use public accessor within classes: all members within class are public by default, and is not "valid/idiomatic javascript"</li>
+                                        <li>Don’t use private accessor within Component class: private accessor won't make your properties/methods on class private during runtime and you should almost never need to work directly with React Component instance nor accessing its class properties.</li>
+                                        <li>Don't use Enums: compiled output generates unnecessary boilerplate</li>
+                                        <li>Always provide explicit type for children Props</li>
+                                        <li>Use type inference for defining Component State or DefaultProps</li>
+                                        <li>Don’t use method declaration within interface/type alias</li>
+                                        <li>Don’t use JSX.Element to annotate function/component return type or children/props</li>
+                                      </ol>
+                                </section>
+
+                                <section>
+                                      <h2>Resources:</h2>
+                                      <ul>
+                                        <li>http://www.techladder.io/?tech=typescript</li>
+                                        <li>https://www.typescriptlang.org/</li>
+                                        <li>https://www.typescriptlang.org/play/index.html</li>
+                                        <li>https://basarat.gitbooks.io/typescript/content/</li>
+                                        <li>https://medium.com/@martin_hotell/10-typescript-pro-tips-patterns-with-or-without-react-5799488d6680</li>
+                                      </ul>
+                                </section>
+
+                                <section>
+                                      <h2>TODO:</h2>
+                                      <ul>
+                                        <li>Deep dive tsconfig options</li>
+                                        <li>Go beyond basic TypeScript usage</li>
+                                        <li>Deepen TypeScript potentiality for functional programmin</li>
+                                      </ul>
                                 </section>
 
 			</div>
